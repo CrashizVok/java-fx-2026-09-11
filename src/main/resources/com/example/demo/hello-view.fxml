@@ -13,7 +13,7 @@
       <children>
          <AnchorPane layoutX="209.0" prefHeight="200.0" prefWidth="240.0">
             <children>
-               <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Hozzáad">
+               <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#hozzaadFunction" prefHeight="25.0" prefWidth="94.0" text="Hozzáad">
                   <graphic>
                      <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -45,20 +45,21 @@
          </AnchorPane>
          <AnchorPane prefHeight="283.0" prefWidth="205.0">
             <children>
-               <RadioButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Piros">
+               <RadioButton fx:id="radioPiros" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Piros">
                   <toggleGroup>
                      <ToggleGroup fx:id="szinek" />
                   </toggleGroup>
                </RadioButton>
-               <RadioButton layoutX="14.0" layoutY="40.0" mnemonicParsing="false" text="Zöld" toggleGroup="$szinek" />
-               <RadioButton layoutX="14.0" layoutY="67.0" mnemonicParsing="false" text="Kék" toggleGroup="$szinek" />
-               <RadioButton layoutX="113.0" layoutY="14.0" mnemonicParsing="false" text="Négyzet">
+               <RadioButton fx:id="radioZold" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" text="Zöld" toggleGroup="$szinek" />
+               <RadioButton fx:id="radioKek" layoutX="14.0" layoutY="67.0" mnemonicParsing="false" text="Kék" toggleGroup="$szinek" />
+               <RadioButton fx:id="radioNegyzet" layoutX="113.0" layoutY="14.0" mnemonicParsing="false" text="Négyzet">
                   <toggleGroup>
                      <ToggleGroup fx:id="alakzatok" />
                   </toggleGroup>
                </RadioButton>
-               <RadioButton layoutX="113.0" layoutY="40.0" mnemonicParsing="false" text="Kör" toggleGroup="$alakzatok" />
-               <RadioButton layoutX="113.0" layoutY="67.0" mnemonicParsing="false" text="Háromszög" toggleGroup="$alakzatok" />
+               <RadioButton fx:id="radioKor" layoutX="113.0" layoutY="40.0" mnemonicParsing="false" text="Kör" toggleGroup="$alakzatok" />
+               <RadioButton fx:id="radioHaromszog" layoutX="113.0" layoutY="67.0" mnemonicParsing="false" text="Háromszög" toggleGroup="$alakzatok" />
+               <ImageView fitHeight="138.0" fitWidth="147.0" layoutX="29.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" />
             </children>
          </AnchorPane>
       </children>
