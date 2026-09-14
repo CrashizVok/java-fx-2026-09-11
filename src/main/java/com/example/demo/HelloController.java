@@ -3,10 +3,11 @@ package com.example.demo;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class HelloController {
-    String[] nowAvailable = null;
+    ArrayList<String> nowAvailable = new ArrayList<>();
 
     @FXML
     private RadioButton radioPiros, radioZold, radioKek, radioNegyzet, radioKor, radioHaromszog;
@@ -16,19 +17,19 @@ public class HelloController {
         getColorRadio();
         getShaved();
 
-        System.out.println(Arrays.toString(nowAvailable));
+        System.out.println(nowAvailable);
 
     }
 
     protected void getColorRadio(){
         if (radioKek.isSelected()){
-            nowAvailable[0] = "kek";
+            nowAvailable.add("Kék");
         }
         else if(radioZold.isSelected()){
-            nowAvailable[0] = "zold";
+            nowAvailable.add("Zöld");
         }
         else if(radioPiros.isSelected()){
-            nowAvailable[0] = "piros";
+            nowAvailable.add("Piros");
         }
         else {
             System.out.println("Nagy baj van");
@@ -37,16 +38,20 @@ public class HelloController {
 
     protected void getShaved(){
         if (radioNegyzet.isSelected()){
-            nowAvailable[1] = "negyzet";
+            nowAvailable.add("Négyzet");
         }
         else if (radioKor.isSelected()) {
-            nowAvailable[1] = "kor";
+            nowAvailable.add("Kör");
         }
         else if (radioHaromszog.isSelected()) {
-            nowAvailable[1] = "haromszog";
+            nowAvailable.add("Háromszög");
         }
         else {
             System.out.println("Nagy baj van, megint");
         }
+    }
+
+    protected void setBackground(){
+
     }
 }
