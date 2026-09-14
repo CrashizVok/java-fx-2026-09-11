@@ -51,7 +51,6 @@ public class HelloController {
         }
     }
 
-
     protected void setBackground(){
 
     }
