@@ -22,7 +22,7 @@
                      </ImageView>
                   </graphic>
                </Button>
-               <Button layoutX="132.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Töröl">
+               <Button layoutX="132.0" layoutY="14.0" mnemonicParsing="false" onAction="#torolFunction" prefHeight="25.0" prefWidth="94.0" text="Töröl">
                   <graphic>
                      <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -31,7 +31,7 @@
                      </ImageView>
                   </graphic>
                </Button>
-               <ListView layoutX="26.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" />
+               <ListView fx:id="listView" layoutX="26.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" />
                <Button layoutX="85.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="Mentés">
                   <graphic>
                      <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
@@ -45,21 +45,25 @@
          </AnchorPane>
          <AnchorPane prefHeight="283.0" prefWidth="205.0">
             <children>
-               <RadioButton fx:id="radioPiros" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Piros">
+               <RadioButton fx:id="radioPiros" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#setPiros" text="Piros">
                   <toggleGroup>
                      <ToggleGroup fx:id="szinek" />
                   </toggleGroup>
                </RadioButton>
-               <RadioButton fx:id="radioZold" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" selected="true" text="Zöld" toggleGroup="$szinek" />
-               <RadioButton fx:id="radioKek" layoutX="14.0" layoutY="67.0" mnemonicParsing="false" text="Kék" toggleGroup="$szinek" />
-               <RadioButton fx:id="radioNegyzet" layoutX="113.0" layoutY="14.0" mnemonicParsing="false" text="Négyzet">
+               <RadioButton fx:id="radioZold" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" onAction="#setZold" selected="true" text="Zöld" toggleGroup="$szinek" />
+               <RadioButton fx:id="radioKek" layoutX="14.0" layoutY="67.0" mnemonicParsing="false" onAction="#setKek" text="Kék" toggleGroup="$szinek" />
+               <RadioButton fx:id="radioNegyzet" layoutX="113.0" layoutY="14.0" mnemonicParsing="false" onAction="#setNegyzet" text="Négyzet">
                   <toggleGroup>
                      <ToggleGroup fx:id="alakzatok" />
                   </toggleGroup>
                </RadioButton>
-               <RadioButton fx:id="radioKor" layoutX="113.0" layoutY="40.0" mnemonicParsing="false" text="Kör" toggleGroup="$alakzatok" />
-               <RadioButton fx:id="radioHaromszog" layoutX="113.0" layoutY="67.0" mnemonicParsing="false" selected="true" text="Háromszög" toggleGroup="$alakzatok" />
-               <ImageView fitHeight="138.0" fitWidth="147.0" layoutX="29.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" />
+               <RadioButton fx:id="radioKor" layoutX="113.0" layoutY="40.0" mnemonicParsing="false" onAction="#setKor" text="Kör" toggleGroup="$alakzatok" />
+               <RadioButton fx:id="radioHaromszog" layoutX="113.0" layoutY="67.0" mnemonicParsing="false" onAction="#setHaromszog" selected="true" text="Háromszög" toggleGroup="$alakzatok" />
+               <Label fx:id="label" layoutX="48.0" layoutY="110.0">
+                  <graphic>
+                     <ImageView fx:id="image" fitHeight="138.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true" />
+                  </graphic>
+               </Label>
             </children>
          </AnchorPane>
       </children>

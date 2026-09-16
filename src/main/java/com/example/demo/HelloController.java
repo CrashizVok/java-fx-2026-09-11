@@ -1,29 +1,68 @@
 package com.example.demo;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.util.Objects;
 
 public class HelloController {
-    ArrayList<String> nowAvailable = new ArrayList<>();
+    ObservableList<String> nowAvailable = FXCollections.observableArrayList();
+    ObservableList<String> data = FXCollections.observableArrayList();
+
+    @FXML
+    private ListView<String> listView;
 
     @FXML
     private RadioButton radioPiros, radioZold, radioKek, radioNegyzet, radioKor, radioHaromszog;
 
     @FXML
+    private ImageView image;
+
+    @FXML
+    private Label label;
+
+
+    protected void megjelenit(){
+        try{
+            for (int i = 1; i < nowAvailable.size(); i = i+2){
+                String line = nowAvailable.get(i) + " + " + nowAvailable.get(i+1);
+
+                data.add(line);
+
+                //listView.setItems(data);
+
+                System.out.println(nowAvailable.get(i) + " + " + nowAvailable.get(i+1));
+            }
+        }catch (Exception e){
+            System.out.println("################");
+        }
+    }
+
+    @FXML
     protected void hozzaadFunction() {
         getColorRadio();
         getShaved();
+        megjelenit();
+        listView.setItems(data);
+        //System.out.println(nowAvailable);
 
-        System.out.println(nowAvailable);
-
+    }
+    @FXML
+    protected void torolFunction(){
+        data.clear();
+        nowAvailable.clear();
+        megjelenit();
     }
 
     protected void getColorRadio(){
         if (radioKek.isSelected()){
             nowAvailable.add("Kék");
+            //nowAvailable.set(nowAvailable.size()-1, "Kék");
         }
         else if(radioZold.isSelected()){
             nowAvailable.add("Zöld");
@@ -51,7 +90,28 @@ public class HelloController {
         }
     }
 
-    protected void setBackground(){
-
+    @FXML
+    protected void setPiros(){
+        label.setStyle("-fx-background-color: #ff0000; -fx-border-color: black;");
+    }
+    @FXML
+    protected void setZold(){
+        label.setStyle("-fx-background-color: #00ff00; -fx-border-color: black;");
+    }
+    @FXML
+    protected void setKek(){
+        label.setStyle("-fx-background-color: #0000ff; -fx-border-color: black;");
+    }
+    @FXML
+    protected void setNegyzet(){
+        image.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/negyzet.png"))));
+    }
+    @FXML
+    protected void setKor(){
+        image.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/kor.png"))));
+    }
+    @FXML
+    protected void setHaromszog(){
+        image.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/haromszog.png"))));
     }
 }
