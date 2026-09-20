@@ -26,10 +26,39 @@ public class HelloController {
     @FXML
     private Label label;
 
+    @FXML
+    public void initialize() {
+        listView.setItems(data);
+
+        if (!radioPiros.isSelected() && !radioZold.isSelected() && !radioKek.isSelected()) {
+            radioPiros.setSelected(true);
+        }
+        if (!radioNegyzet.isSelected() && !radioKor.isSelected() && !radioHaromszog.isSelected()) {
+            radioNegyzet.setSelected(true);
+        }
+
+        if (radioPiros.isSelected()) {
+            setPiros();
+        } else if (radioZold.isSelected()) {
+            setZold();
+        } else if (radioKek.isSelected()) {
+            setKek();
+        }
+
+        if (radioNegyzet.isSelected()) {
+            setNegyzet();
+        } else if (radioKor.isSelected()) {
+            setKor();
+        } else if (radioHaromszog.isSelected()) {
+            setHaromszog();
+        }
+    }
 
     protected void megjelenit(){
+        data.clear();
+
         try{
-            for (int i = 1; i < nowAvailable.size(); i = i+2){
+            for (int i = 0; i+1 < nowAvailable.size(); i = i+2){
                 String line = nowAvailable.get(i) + " + " + nowAvailable.get(i+1);
 
                 data.add(line);
