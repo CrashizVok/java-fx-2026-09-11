@@ -30,6 +30,8 @@ public class HelloController {
     public void initialize() {
         listView.setItems(data);
 
+        loadFile();
+
         listView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
                 String[] reszek = newVal.split(" \\+ ");
@@ -165,11 +167,42 @@ public class HelloController {
         image.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/haromszog.png"))));
     }
 
-
-
     @FXML
     protected void save(){
-        System.out.println(data);
+        //System.out.println(data);
+
+        try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("alakzat.dat"))) {
+            for (String elem : data) {
+                writer.write(elem);
+                writer.newLine();
+            }
+        } catch (Exception e) {
+            System.err.println("Hiba: " + e);
+        }
+    }
+
+    private void loadFile() {
+        java.io.File file = new java.io.File("alakzat.dat");
+
+        try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(file))) {
+            String sor;
+            while ((sor = reader.readLine()) != null) {
+                if (!sor.trim().isEmpty()) {
+                    String[] asd = sor.split(" \\+ ");
+                    if (asd.length == 2) {
+                        nowAvailable.add(asd[0]);
+                        nowAvailable.add(asd[1]);
+                    }
+                }
+            }
+            megjelenit();
+
+            if (!data.isEmpty()) {
+                listView.getSelectionModel().select(0);
+            }
+        } catch (Exception e) {
+            System.err.println("Hib: " + e);
+        }
     }
 }
 
