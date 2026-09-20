@@ -15,16 +15,26 @@ public class HelloController {
     ObservableList<String> data = FXCollections.observableArrayList();
 
     @FXML
-    private ListView<String> listView;
+    ListView<String> listView;
 
     @FXML
-    private RadioButton radioPiros, radioZold, radioKek, radioNegyzet, radioKor, radioHaromszog;
+    RadioButton radioPiros;
+    @FXML
+    RadioButton radioZold;
+    @FXML
+    RadioButton radioKek;
+    @FXML
+    RadioButton radioNegyzet;
+    @FXML
+    RadioButton radioKor;
+    @FXML
+    RadioButton radioHaromszog;
 
     @FXML
-    private ImageView image;
+    ImageView image;
 
     @FXML
-    private Label label;
+    Label label;
 
     @FXML
     public void initialize() {
