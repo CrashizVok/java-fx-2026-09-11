@@ -30,6 +30,21 @@ public class HelloController {
     public void initialize() {
         listView.setItems(data);
 
+        listView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                String[] reszek = newVal.split(" \\+ ");
+                if (reszek.length == 2) {
+                    if (reszek[0].equals("Piros")) setPiros();
+                    else if (reszek[0].equals("Zöld")) setZold();
+                    else if (reszek[0].equals("Kék")) setKek();
+
+                    if (reszek[1].equals("Négyzet")) setNegyzet();
+                    else if (reszek[1].equals("Kör")) setKor();
+                    else if (reszek[1].equals("Háromszög")) setHaromszog();
+                }
+            }
+        });
+
         if (!radioPiros.isSelected() && !radioZold.isSelected() && !radioKek.isSelected()) {
             radioPiros.setSelected(true);
         }
@@ -143,6 +158,18 @@ public class HelloController {
     protected void setHaromszog(){
         image.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/haromszog.png"))));
     }
+
+    @FXML
+    protected void kivalsztott() {
+        String selectedItem = listView.getSelectionModel().getSelectedItem();
+
+        if (selectedItem != null) {
+            label.setText("Kiválasztva: " + selectedItem);
+        } else {
+            label.setText("Nincs semmi kiválasztva!");
+        }
+    }
+
 
     @FXML
     protected void save(){
