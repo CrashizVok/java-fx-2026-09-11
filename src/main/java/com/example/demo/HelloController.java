@@ -143,4 +143,10 @@ public class HelloController {
     protected void setHaromszog(){
         image.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/haromszog.png"))));
     }
+
+    @FXML
+    protected void save(){
+        System.out.println(data);
+    }
 }
+

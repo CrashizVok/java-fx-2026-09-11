@@ -32,7 +32,7 @@
                   </graphic>
                </Button>
                <ListView fx:id="listView" layoutX="26.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" />
-               <Button layoutX="85.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="Mentés">
+               <Button layoutX="85.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" onAction="#save" text="Mentés">
                   <graphic>
                      <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                         <image>
