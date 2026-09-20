@@ -98,9 +98,15 @@ public class HelloController {
     }
     @FXML
     protected void torolFunction(){
-        data.clear();
-        nowAvailable.clear();
-        megjelenit();
+        int selectIndex = listView.getSelectionModel().getSelectedIndex();
+
+        if (selectIndex != -1){
+            int index = selectIndex * 2;
+            nowAvailable.remove(index);
+            nowAvailable.remove(index);
+
+            megjelenit();
+        }
     }
 
     protected void getColorRadio(){
@@ -159,16 +165,6 @@ public class HelloController {
         image.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/assets/haromszog.png"))));
     }
 
-    @FXML
-    protected void kivalsztott() {
-        String selectedItem = listView.getSelectionModel().getSelectedItem();
-
-        if (selectedItem != null) {
-            label.setText("Kiválasztva: " + selectedItem);
-        } else {
-            label.setText("Nincs semmi kiválasztva!");
-        }
-    }
 
 
     @FXML
